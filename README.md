@@ -33,4 +33,11 @@ Create a file called `index.html` and populate it with the following code:
   </body>
 </html>
 ```
-## Step 2 - 
+If you view your file in the browser it should look like this:
+
+![step 1 image](https://res.cloudinary.com/dkibchpur/image/upload/v1526308710/Records.png)
+
+## Step 2 - Using MongoDB Stich
+First, you will need to sign up for an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). From there you will see a screen with a title that says clusters. You will want to click to where it says "Build a New Cluster":
+
+![step 2 cluster](https://res.cloudinary.com/dkibchpur/image/upload/v1526309076/cluster.png)
