@@ -85,3 +85,13 @@ Now that we have our Stitch app set up, we can add in authentication that allows
 Let's turn on Authentication for the app:
 
 ![step 4](https://res.cloudinary.com/dkibchpur/image/upload/v1526312753/auth.png)
+
+## Step 5: Updating Our Site
+Right before the last `div` add the following HTML to create a form to add records to the site.
+
+```html
+<hr>
+<div id="records"></div>
+<hr>
+Add a New Record: <input id="new_record"><input type="submit" onClick="addComment()">
+```

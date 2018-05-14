@@ -1,22 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Records I Own</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="http://jessicagarson.com" target="_blank">Built by Jessica Garson</a></li>
-            <li role="presentation"><a href="https://github.com/JessicaGarson/record-collecting/blob/master/README.md" target="_blank">Tutorial</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="jumbotron">
-        <h1>Records I Own</h1>
-      </div>
-  </body>
+<html>
+    <head>
+        <script src="https://s3.amazonaws.com/stitch-sdks/js/library/v3/stable/stitch.min.js"></script>
+        <script>
+         const clientPromise = stitch.StitchClientFactory.create('recordcollectingapp-xbqua');
+
+         let client;
+         let db;
+         function displayRecordsOnLoad() {
+             clientPromise.then(stitchClient => {
+                 client = stitchClient;
+                 db = client.service('mongodb', 'mongodb-atlas').db('RecordCollecting');
+                 return client.login().then(displayRecords)
+             });
+         }
+
+         function displayRecords() {
+             db.collection('records').find({}).limit(1000).execute().then(docs => {
+                 var html = docs.map(c => "<div>" + c.record + "</div>").join("");
+                 document.getElementById("records").innerHTML = html;
+             });
+         }
+
+         function addRecords() {
+             var foo = document.getElementById("new_record");
+             db.collection("records").insertOne({owner_id : client.authedId(), record: foo.value}).then(displayRecords);
+             foo.value = "";
+         }
+        </script>
+        <title>Records I Own</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    </head>
+    <body onLoad="displayRecordsOnLoad()">
+        <div class="container">
+          <div class="header clearfix">
+            <nav>
+              <ul class="nav nav-pills pull-right">
+                <li role="presentation"><a href="http://jessicagarson.com" target="_blank">Built by Jessica Garson</a></li>
+                <li role="presentation"><a href="https://github.com/JessicaGarson/record-collecting/blob/master/README.md" target="_blank">Tutorial</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="jumbotron">
+            <h1>Records I Own</h1>
+        </div>
+        Below are records that I own:
+        <div id="records"></div>
+        <hr>
+        Add a Record: <input id="new_record"><input type="submit" onClick="addRecords()">
+
+    </body>
 </html>
