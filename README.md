@@ -79,4 +79,9 @@ From there you will be asked to name your app and it will take about 1-3 minutes
 
 ![step 3 create app name](https://res.cloudinary.com/dkibchpur/image/upload/v1526312016/create-app-name.png)
 
-## Step 4:
+## Step 4: Adding Authentication to Our App
+Now that we have our Stitch app set up, we can add in authentication that allows users to login. What is really cool about Stitch is that it is one click to set up security rules such as this one.
+
+Let's turn on Authentication for the app:
+
+![step 4](https://res.cloudinary.com/dkibchpur/image/upload/v1526312753/auth.png)
