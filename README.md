@@ -44,4 +44,4 @@ First, you will need to sign up for an account with [MongoDB Atlas](https://www.
 
 From there make sure you select the cloud provider and region. I selected the first recommend region and the AWS free tier:
 
-![step 2 region](![step 2 cluster](https://res.cloudinary.com/dkibchpur/image/upload/v1526309076/cluster.png)
+![step 2 region](https://res.cloudinary.com/dkibchpur/image/upload/v1526309513/cloud%20and%20region.png)
