@@ -1,15 +1,17 @@
 # Solving the Problem of Buying the Same Record Many Times with MongoDB Stitch and GitHub Pages
 
-I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make [this site](http://jessicagarson.com/record-collecting/).
-
-![Records I Own](https://res.cloudinary.com/dkibchpur/image/upload/v1526325958/records%20I%20own.png)
+I collect vinyl records but every so often I buy a record I already own so I created a site where I can see the records I already own using MongoDB Stitch and GitHub pages.
 
 MongoDB Stitch allows us to quickly create a database and connect to the code using JavaScript to query. GitHub Pages lets us host our site without much configuration.
+
+This tutorial will walk you through how to make [this site](http://jessicagarson.com/record-collecting/).
+
+![Records I Own](https://res.cloudinary.com/dkibchpur/image/upload/v1526325958/records%20I%20own.png)
 
 ## Step 1 - Create a GitHub Repo
 In your GitHub account you will need to create a repository for this project called `record-collecting`.
 
-We will also want to clone this repository into our local environment with the following in our command line:
+We will also want to clone this repository into our local environment. In our command line type the following:
 
 ```bash
 git clone https://github.com/your-github-username/record-collecting.git
@@ -76,7 +78,7 @@ On the left side panel click where it says "Stitch Apps" and from there click wh
 
 ![step 3 create app](https://res.cloudinary.com/dkibchpur/image/upload/v1526311722/create-stitch.png)
 
-From there you will be asked to name your app and it will take about 1-3 minutes to full spin up your new app:
+From there you will be asked to name your app and it will take about 1-3 minutes to fully spin up your new app:
 
 ![step 3 create app name](https://res.cloudinary.com/dkibchpur/image/upload/v1526312016/create-app-name.png)
 
@@ -100,6 +102,7 @@ The filters should be changed so they the look like this picture:
 ![Step 6 Filters](https://res.cloudinary.com/dkibchpur/image/upload/v1526324675/filters.png)
 
 The field rules should be changed so they match this picture:
+
 ![Step 6 Field Rules](https://res.cloudinary.com/dkibchpur/image/upload/v1526324782/field%20rules.png)
 
 ## Step 7: Updating The JavaScript and HTML
@@ -178,6 +181,6 @@ From here we can go to our repository in the browser of GitHub and go to the set
 ![step 8](http://res.cloudinary.com/dkibchpur/image/upload/v1526325857/gh%20pages.png)
 
 ## Conclusion
-We have now built a site where we can add records to so that I can cross reference it when I go record shopping. A good next step would be adding an integration with a webhook such as Twilio. Therefore I could text a number every time I buy a new record. I'd also be able add logic so that if I already own a record I get a text before I buy a record I already own.
+We have now built a site where I can add records to so that I can cross reference it when I go record shopping. A good next step would be adding an integration with a webhook such as Twilio, therefore I could text a number every time I buy a new record. I'd also be able add logic so that if I already own a record I get a text before I buy a record I already own.
 
 The final product can be found at [jessicagarson.com/record-collecting](http://jessicagarson.com/record-collecting/).
