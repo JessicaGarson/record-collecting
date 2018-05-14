@@ -35,9 +35,13 @@ Create a file called `index.html` and populate it with the following code:
 ```
 If you view your file in the browser it should look like this:
 
-![step 1 image](https://res.cloudinary.com/dkibchpur/image/upload/v1526308710/Records.png)
+![step 1 image](https://res.cloudinary.com/dkibchpur/image/upload/v1526309323/Records.png)
 
-## Step 2 - Using MongoDB Stich
+## Step 2 - Stetting Up MongoDB Stitch
 First, you will need to sign up for an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). From there you will see a screen with a title that says clusters. You will want to click to where it says "Build a New Cluster":
 
 ![step 2 cluster](https://res.cloudinary.com/dkibchpur/image/upload/v1526309076/cluster.png)
+
+From there make sure you select the cloud provider and region. I selected the first recommend region and the AWS free tier:
+
+![step 2 region](![step 2 cluster](https://res.cloudinary.com/dkibchpur/image/upload/v1526309076/cluster.png)
