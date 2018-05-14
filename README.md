@@ -1,8 +1,8 @@
 # Solving the Problem of Buying the Same Record Many Times with MongoDB Stitch and GitHub Pages
 
-![Records I Own](https://res.cloudinary.com/dkibchpur/image/upload/v1526325958/records%20I%20own.png)
+I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make (this site)[http://jessicagarson.com/record-collecting/].
 
-I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make this site.
+![Records I Own](https://res.cloudinary.com/dkibchpur/image/upload/v1526325958/records%20I%20own.png)
 
 MongoDB Stitch allows us to quickly create a database and connect to the code using JavaScript to query. GitHub Pages lets us host our site without much configuration.
 
@@ -182,4 +182,4 @@ Once this is published it will give you the site this has been published to.
 ## Conclusion
 We have now built a site where we can add records to so that I can cross reference it when I go record shopping. A good next step would be adding an integration with a webhook such as Twilio. Therefore I could text a number every time I buy a new record. I'd also be able add logic so that if I already own a record I get a text before I buy a record I already own.
 
-The final product can be found at [jessicagarson.com/record-collecting](http://jessicagarson.com/record-collecting/). 
+The final product can be found at [jessicagarson.com/record-collecting](http://jessicagarson.com/record-collecting/).
