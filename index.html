@@ -22,9 +22,9 @@
          }
 
          function addRecords() {
-             var foo = document.getElementById("new_record");
-             db.collection("records").insertOne({owner_id : client.authedId(), record: foo.value}).then(displayRecords);
-             foo.value = "";
+             var new = document.getElementById("new_record");
+             db.collection("records").insertOne({owner_id : client.authedId(), record: new.value}).then(displayRecords);
+             new.value = "";
          }
         </script>
         <title>Records I Own</title>
