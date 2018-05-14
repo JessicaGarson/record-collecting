@@ -1,5 +1,7 @@
 # Solving the Problem of Buying the Same Record Many Times with MongoDB Stitch and GitHub Pages
 
+![Records I Own](https://res.cloudinary.com/dkibchpur/image/upload/v1526325958/records%20I%20own.png)
+
 I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make this site.
 
 MongoDB Stitch allows us to quickly create a database and connect to the code using JavaScript to query. GitHub Pages lets us host our site without much configuration.
@@ -162,7 +164,7 @@ We can update our `index.html` file to the following:
 ```
 You will need to make sure your database and app-name are updated to your own.
 
-## Adding to GitHub Pages
+## Step 8 - Adding to GitHub Pages
 To add our code to GitHub Pages deploy we'll need to first commit our changes to GitHub. In our command line we'll need to commit our file we changed:
 
 ```bash
@@ -171,4 +173,11 @@ git commit -m "adding index.html to GitHub"
 git push
 ```
 
-From here we can go to our repository in the browser of GitHub and go to the
+From here we can go to our repository in the browser of GitHub and go to the settings section. In the section entitled "GitHub Pages" select the source as master branch.
+
+![step 8](http://res.cloudinary.com/dkibchpur/image/upload/v1526325857/gh%20pages.png)
+
+Once this is published it will give you the site this has been published to.
+
+## Conclusion
+A good next step would be adding an integration with a webhook such as Twilio to the site. The final product can be found at [jessicagarson.com/record-collecting](http://jessicagarson.com/record-collecting/).
