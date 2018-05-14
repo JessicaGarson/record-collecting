@@ -1,8 +1,8 @@
-# Solving the Problem of Buying the Same Record Many Times with MongoDB Stitch, Twilio and GitHub Pages
+# Solving the Problem of Buying the Same Record Many Times with MongoDB Stitch and GitHub Pages
 
-I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. To update the records that I own I wanted to be able to text each new record I built to a number. This tutorial will walk you through how to make this site.
+I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make this site.
 
-MongoDB Stitch allows us to quickly create a database and connect to the code using JavaScript to query. We can also connect via a webhook to Twilio, so that we can update our site by sending text messages to a number. GitHub Pages lets us host our site without much configuration.
+MongoDB Stitch allows us to quickly create a database and connect to the code using JavaScript to query. GitHub Pages lets us host our site without much configuration.
 
 ## Step 1 - Create a GitHub Repo
 In your GitHub account you will need to create a repository for this project called `record-collecting`.
@@ -21,8 +21,7 @@ To build the site let's start with some very basic HTML to create a very simple 
 Create a file called `index.html` inside of your `record-collecting` directory and populate it with the following code:
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>Records I Own</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +48,7 @@ If you view your file in the browser it should look like this:
 ![step 1 image](https://res.cloudinary.com/dkibchpur/image/upload/v1526309323/Records.png)
 
 ## Step 3 - Stetting Up MongoDB Atlas Cluster
-First, you will need to sign up for an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). From there you will see a screen with a title that says clusters. You will want to click to where it says "Build a New Cluster":
+First, you will need to sign up for an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). From there you will see a screen with a title that says "clusters". You will want to click to where it says "Build a New Cluster":
 
 ![step 2 cluster](https://res.cloudinary.com/dkibchpur/image/upload/v1526309076/cluster.png)
 
@@ -86,12 +85,90 @@ Let's turn on Authentication for the app:
 
 ![step 4](https://res.cloudinary.com/dkibchpur/image/upload/v1526312753/auth.png)
 
-## Step 5: Updating Our Site
-Right before the last `div` add the following HTML to create a form to add records to the site.
+## Step 5: Adding the Database and Collection Names
+We should go ahead and name our database and collection:
+
+![step 5](https://res.cloudinary.com/dkibchpur/image/upload/v1526324065/Collection.png)
+
+## Step 6: Changing the Rules
+To allow our changes to be made to the database we'll need to click where it says "mongodb-atlas" in the side panel to make changes to the security rules of our clusters.
+
+The filters should be changed so they the look like this picture:
+
+![Step 6 Filters](https://res.cloudinary.com/dkibchpur/image/upload/v1526324675/filters.png)
+
+The field rules should be changed so they match this picture:
+![Step 6 Field Rules](https://res.cloudinary.com/dkibchpur/image/upload/v1526324782/field%20rules.png)
+
+## Step 7: Updating The JavaScript and HTML
+We'll need to update our JavaScript and HTML so that it connects to the database, submits new records and allows us to view our records. We also needed to add in a form so we can add new records to our database.
+
+We can update our `index.html` file to the following:
 
 ```html
-<hr>
-<div id="records"></div>
-<hr>
-Add a New Record: <input id="new_record"><input type="submit" onClick="addComment()">
+<html>
+    <head>
+        <script src="https://s3.amazonaws.com/stitch-sdks/js/library/v3/stable/stitch.min.js"></script>
+        <script>
+         const clientPromise = stitch.StitchClientFactory.create('app-name');
+
+         let client;
+         let db;
+         function displayRecordsOnLoad() {
+             clientPromise.then(stitchClient => {
+                 client = stitchClient;
+                 db = client.service('mongodb', 'mongodb-atlas').db('your-database-name');
+                 return client.login().then(displayRecords)
+             });
+         }
+
+         function displayRecords() {
+             db.collection('records').find({}).limit(1000).execute().then(docs => {
+                 var html = docs.map(c => "<div>" + c.record + "</div>").join("");
+                 document.getElementById("records").innerHTML = html;
+             });
+         }
+
+         function addRecords() {
+             var foo = document.getElementById("new_record");
+             db.collection("records").insertOne({owner_id : client.authedId(), record: foo.value}).then(displayRecords);
+             foo.value = "";
+         }
+        </script>
+        <title>Records I Own</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    </head>
+    <body onLoad="displayRecordsOnLoad()">
+        <div class="container">
+          <div class="header clearfix">
+            <nav>
+              <ul class="nav nav-pills pull-right">
+                <li role="presentation"><a href="http://jessicagarson.com" target="_blank">Built by Jessica Garson</a></li>
+                <li role="presentation"><a href="https://github.com/JessicaGarson/record-collecting/blob/master/README.md" target="_blank">Tutorial</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="jumbotron">
+            <h1>Records I Own</h1>
+        </div>
+        Below are records that I own:
+        <div id="records"></div>
+        <hr>
+        Add a Record: <input id="new_record"><input type="submit" onClick="addRecords()">
+
+    </body>
+</html>
 ```
+You will need to make sure your database and app-name are updated to your own.
+
+## Adding to GitHub Pages
+To add our code to GitHub Pages deploy we'll need to first commit our changes to GitHub. In our command line we'll need to commit our file we changed:
+
+```bash
+git add index.html
+git commit -m "adding index.html to GitHub"
+git push
+```
+
+From here we can go to our repository in the browser of GitHub and go to the
