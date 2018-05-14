@@ -180,4 +180,6 @@ From here we can go to our repository in the browser of GitHub and go to the set
 Once this is published it will give you the site this has been published to.
 
 ## Conclusion
-A good next step would be adding an integration with a webhook such as Twilio to the site. The final product can be found at [jessicagarson.com/record-collecting](http://jessicagarson.com/record-collecting/).
+We have now built a site where we can add records to so that I can cross reference it when I go record shopping. A good next step would be adding an integration with a webhook such as Twilio. Therefore I could text a number every time I buy a new record. I'd also be able add logic so that if I already own a record I get a text before I buy a record I already own.
+
+The final product can be found at [jessicagarson.com/record-collecting](http://jessicagarson.com/record-collecting/). 
