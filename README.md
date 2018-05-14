@@ -1,6 +1,6 @@
 # Solving the Problem of Buying the Same Record Many Times with MongoDB Stitch and GitHub Pages
 
-I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make (this site)[http://jessicagarson.com/record-collecting/].
+I collect vinyl records but every so often I buy a record I already own. I created a site where I can see the records I already own. This tutorial will walk you through how to make [this site](http://jessicagarson.com/record-collecting/).
 
 ![Records I Own](https://res.cloudinary.com/dkibchpur/image/upload/v1526325958/records%20I%20own.png)
 
